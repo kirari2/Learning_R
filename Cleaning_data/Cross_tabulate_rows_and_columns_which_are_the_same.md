@@ -56,3 +56,14 @@ column2       2       4       1       2
 column3       0       1       3       1
 column4       3       2       1       4
 ```
+
+As the upper and lower triangles are mirror images, only the upper triangle is printed
+```R
+> match_table[lower.tri(match_table)] <- NA
+> print(match_table)
+        column1 column2 column3 column4
+column1       3       2       0       3
+column2      NA       4       1       2
+column3      NA      NA       3       1
+column4      NA      NA      NA       4
+```
