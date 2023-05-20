@@ -78,3 +78,10 @@ test_2     NA      2      1      0
 test_3     NA     NA      2      1
 test_4     NA     NA     NA      2
 ```
+
+To give the diagnonal cells
+```R
+> diag(match_table)
+test_1 test_2 test_3 test_4 
+     2      2      2      2 
+```
