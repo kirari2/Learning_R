@@ -25,19 +25,19 @@ match_table <- matrix(0,
 Compare each cell with other cells and calculate the number of matches
 ```R
 for (i in 1:ncol(df)) {
-  for (j in 1:ncol(df)) {
-    for (k in 1:nrow(df)) {
-      if (!is.na(df[k, i]) && 
-          !is.na(df[k, j]) &&
-          identical(df[k, i], df[k, j])) {
-            match_table[i, j] <- match_table[i, j] + 1
-      }
+    for (j in 1:ncol(df)) {
+        for (k in 1:nrow(df)) {
+            if (!is.na(df[k, i]) && 
+                !is.na(df[k, j]) &&
+                identical(df[k, i], df[k, j])) {
+                    match_table[i, j] <- match_table[i, j] + 1
+            }
+        }
     }
-  }
 }
 ```
 
-Print the match table
+Compare the `match_table` with `df` and the transposed dataframe `t(df)`
 ```R
 > df
   test_1 test_2 test_3 test_4
@@ -60,6 +60,8 @@ test_2      1      2      1      0
 test_3      1      1      2      1
 test_4      1      0      1      2
 ```
+
+Adding back the diagonal 
 
 As the upper and lower triangles are mirror images, only the upper triangle is printed
 ```R
