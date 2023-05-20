@@ -46,6 +46,13 @@ Print the match table
 3   <NA>   Fail   Pass   Fail
 4   Pass   Pass   Fail   Fail
 
+> t(df)
+       [,1]   [,2]   [,3]   [,4]  
+test_1 "Pass" "Fail" NA     "Pass"
+test_2 "Fail" "Fail" "Fail" "Pass"
+test_3 "Pass" NA     "Pass" "Fail"
+test_4 "Fail" "Pass" "Fail" "Fail"
+
 > print(match_table)
        test_1 test_2 test_3 test_4
 test_1      3      2      1      0
