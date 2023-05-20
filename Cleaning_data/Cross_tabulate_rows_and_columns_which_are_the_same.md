@@ -7,10 +7,10 @@ df <- data.frame(test_1 = c("Pass", "Fail", NA, "Pass"),
                  test_4 = c("Fail", "Pass", "Fail", "Fail"))
 > df
   test_1 test_2 test_3 test_4
-1   Pass   Fail   Pass   Fail
-2   Fail   Fail   <NA>   Pass
-3   <NA>   Fail   Pass   Fail
-4   Pass   Pass   Fail   Fail
+1   Pass   <NA>   Pass   Pass
+2   <NA>   <NA>   <NA>   Pass
+3   <NA>   Pass   Pass   <NA>
+4   Pass   Pass   <NA>   <NA>
 ```
 
 Initialize an empty match table with the same column and row names
@@ -41,33 +41,33 @@ Print the match table
 ```R
 > df
   test_1 test_2 test_3 test_4
-1   Pass   Fail   Pass   Fail
-2   Fail   Fail   <NA>   Pass
-3   <NA>   Fail   Pass   Fail
-4   Pass   Pass   Fail   Fail
+1   Pass   <NA>   Pass   Pass
+2   <NA>   <NA>   <NA>   Pass
+3   <NA>   Pass   Pass   <NA>
+4   Pass   Pass   <NA>   <NA>
 
 > t(df)
        [,1]   [,2]   [,3]   [,4]  
-test_1 "Pass" "Fail" NA     "Pass"
-test_2 "Fail" "Fail" "Fail" "Pass"
-test_3 "Pass" NA     "Pass" "Fail"
-test_4 "Fail" "Pass" "Fail" "Fail"
+test_1 "Pass" NA     NA     "Pass"
+test_2 NA     NA     "Pass" "Pass"
+test_3 "Pass" NA     "Pass" NA    
+test_4 "Pass" "Pass" NA     NA 
 
-> print(match_table)
+> match_table
        test_1 test_2 test_3 test_4
-test_1      3      2      1      0
-test_2      2      4      0      2
-test_3      1      0      3      1
-test_4      0      2      1      4
+test_1      2      1      1      1
+test_2      1      2      1      0
+test_3      1      1      2      1
+test_4      1      0      1      2
 ```
 
 As the upper and lower triangles are mirror images, only the upper triangle is printed
 ```R
 > match_table[lower.tri(match_table)] <- NA
-> print(match_table)
+> match_table
        test_1 test_2 test_3 test_4
-test_1      3      2      1      0
-test_2     NA      4      0      2
-test_3     NA     NA      3      1
-test_4     NA     NA     NA      4
+test_1      2      1      1      1
+test_2     NA      2      1      0
+test_3     NA     NA      2      1
+test_4     NA     NA     NA      2
 ```
