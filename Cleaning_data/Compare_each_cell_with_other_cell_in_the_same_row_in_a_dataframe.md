@@ -1,5 +1,12 @@
-Create sample dataframe `df`
+## Compare each cell with other cells of the same row in a data frame
 
+The following is the R codes trying to solve the problem of"
+- Comparing each cell with the other cells of the same row in a data frame
+- Record the number of matches in a cross-tabulation of the column names, i.e. row and column are the same in the matrix
+- Since the upper and lower triangles of the matrix are the same, only the upper part is shown  
+
+\
+(1) Create sample dataframe `df`
 ```R
 df <- data.frame(test_1 = c("Pass", NA, NA, "Pass"),
                  test_2 = c(NA, NA, "Pass", "Pass"),
@@ -12,8 +19,8 @@ df <- data.frame(test_1 = c("Pass", NA, NA, "Pass"),
 # 3   <NA>   Pass   Pass   <NA>
 # 4   Pass   Pass   <NA>   <NA>
 ```
-
-Initialize an empty match table with the same column and row names
+\
+(2) Initialize an empty match table with the same column and row names
 ```R
 column_names <- colnames(df)
 match_table <- matrix(0,
@@ -21,8 +28,8 @@ match_table <- matrix(0,
                       ncol = ncol(df),
                       dimnames = list(column_names, column_names))
 ```
-
-Compare each cell with other cells and calculate the number of matches:
+\
+(3) Compare each cell with other cells and calculate the number of matches:
 ```R
 for (i in 1:ncol(df)) {
     for (j in 1:ncol(df)) {
@@ -45,7 +52,6 @@ Note
 - Comparing each cell at positions `[k, i]`) and `[k, i]` for matches within the same row, comparing each cell with all other cells in the row.
 - When `i == j`, the comparison is among each cell of the column with every other cell in the same column, including the diagonal cells of the matrix. For example, conisder `i == j == 1` which represents the first column, we are comparing each cell of the first column `df[k, 1]` with every other cell in the first column `df[k, 1]` where `k` represents the row number. The comparison includes the diagonal cells, e.g. `df[1, 1]`, `df[2, 2]` etc.
 
-\
 To further understand the loop, consider the following code
 ```R
 for (i in 1:ncol(df)) {
@@ -94,7 +100,6 @@ for (i in 1:ncol(df)) {
 ```
 ... and so on.
 
-\
 Compare the `match_table` with `df` and the transposed dataframe `t(df)`
 ```R
 > df
@@ -118,8 +123,8 @@ Compare the `match_table` with `df` and the transposed dataframe `t(df)`
 # test_3      1      1      2      1
 # test_4      1      0      1      2
 ```
- 
-As the upper and lower triangles are mirror images, only the upper triangle is printed
+\
+(4) As the upper and lower triangles are mirror images, only the upper triangle is printed
 ```R
 > match_table[lower.tri(match_table)] <- NA
 > match_table
@@ -129,8 +134,8 @@ As the upper and lower triangles are mirror images, only the upper triangle is p
 # test_3     NA     NA      2      1
 # test_4     NA     NA     NA      2
 ```
-
-To give the diagnonal cells
+\
+(5) In case you need to extract values of the diagnonal cells
 ```R
 > diag(match_table)
 # test_1 test_2 test_3 test_4 
