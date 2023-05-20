@@ -1,10 +1,10 @@
 Create sample dataframe `df`
 
 ```R
-df <- data.frame(test_1 = c("Pass", "Fail", NA, "Pass"),
-                 test_2 = c("Fail", "Fail", "Fail", "Pass"),
-                 test_3 = c("Pass", NA, "Pass", "Fail"),
-                 test_4 = c("Fail", "Pass", "Fail", "Fail"))
+df <- data.frame(test_1 = c("Pass", NA, NA, "Pass"),
+                 test_2 = c(NA, NA, "Pass", "Pass"),
+                 test_3 = c("Pass", NA, "Pass", NA),
+                 test_4 = c("Pass", "Pass", NA, NA))
 > df
   test_1 test_2 test_3 test_4
 1   Pass   <NA>   Pass   Pass
