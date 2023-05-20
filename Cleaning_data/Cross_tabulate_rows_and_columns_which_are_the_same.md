@@ -13,13 +13,9 @@ df <- data.frame(test_1 = c("Pass", "Fail", NA, "Pass"),
 4   Pass   Pass   Fail   Fail
 ```
 
-Create column and row names
+Initialize an empty match table with the same column and row names
 ```R
 column_names <- colnames(df)
-```
-
-Initialize an empty match table
-```R
 match_table <- matrix(0,
                       nrow = nrow(df),
                       ncol = ncol(df),
