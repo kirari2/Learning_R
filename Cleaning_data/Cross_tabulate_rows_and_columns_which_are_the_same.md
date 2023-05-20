@@ -38,11 +38,11 @@ for (i in 1:ncol(df)) {
 ```
 Note
 - Three nested `for` loops are sufficient to compare each cell with all other cells in the data frame and calculate the number of matches.
-- The first loop (`i`) iterates over the columns of the data frame.
-- The second loop (`j`) iterates over the columns of the data frame.
-- The third loop (`k`) iterates over the rows of the data frame.
-- Comparing each cell at positions (`k`, `i`) and (`k`, `i`) for matches within the same row, comparing each cell with all other cells in the row.
-- When `i == j`, the comparison is among each cell of the column with every other cell in the same column, including the diagonal cells of the matrix. For example, conisder `i == j == 1` which represents the first column, we are comparing each cell of the first column (`df[k, 1]`) with every other cell in the first column (`df[k, 1]`) where `k` represents the row number. The comparison includes the diagonal cells, e.g. `df[1, 1]`, `df[2, 2]` etc.
+- The first loop `i` iterates over the columns of the data frame.
+- The second loop `j` iterates over the columns of the data frame.
+- The third loop `k` iterates over the rows of the data frame.
+- Comparing each cell at positions `[k, i]`) and `[k, i]` for matches within the same row, comparing each cell with all other cells in the row.
+- When `i == j`, the comparison is among each cell of the column with every other cell in the same column, including the diagonal cells of the matrix. For example, conisder `i == j == 1` which represents the first column, we are comparing each cell of the first column `df[k, 1]` with every other cell in the first column `df[k, 1]` where `k` represents the row number. The comparison includes the diagonal cells, e.g. `df[1, 1]`, `df[2, 2]` etc.
 
 Compare the `match_table` with `df` and the transposed dataframe `t(df)`
 ```R
