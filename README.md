@@ -1,2 +1,2 @@
 # Learning_R
-R learning diaries
+My R learning diaries. Hope it may useful to you.
